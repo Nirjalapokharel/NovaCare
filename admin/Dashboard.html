@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Operations | HAMS Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin/admin_style.css">
+</head>
+<body class="admin-page">
+<div class="adm-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+<button class="adm-mob-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
+
+<div class="admin-shell">
+
+    <aside class="adm-sidebar">
+        <a class="adm-brand" href="dashboard.html">
+            <span class="adm-brand-icon">✚</span>
+            <div class="adm-brand-text">
+                <strong>HAMS</strong>
+                <small>Admin Console</small>
+            </div>
+        </a>
+
+        <nav class="adm-nav">
+            <span class="adm-nav-label">Hospital Network</span>
+            <a class="active" href="dashboard.html"><span class="nav-icon">⊞</span>Overview</a>
+            <a href="hospitals.html"><span class="nav-icon">🏥</span>Manage Hospitals</a>
+            <a href="verify_doctors.html">
+                <span class="nav-icon">🩺</span>Verify &amp; Affiliations
+                <span class="adm-badge">3</span>
+            </a>
+            <a href="schedule_approvals.html">
+                <span class="nav-icon">📅</span>Schedule Approvals
+                <span class="adm-badge">2</span>
+            </a>
+            <a href="appointments.html">
+                <span class="nav-icon">📋</span>Appointments
+                <span class="adm-badge appointment-badge">5</span>
+            </a>
+            <a href="../login.html"><span class="nav-icon">↩</span>Sign Out</a>
+        </nav>
+    </aside>
+
+    <div class="adm-content">
+        <header class="adm-topbar">
+            <div class="topbar-left">
+                <p class="topbar-date">Wednesday, September 2, 2026</p>
+                <h1 class="topbar-title">Super Admin Operations Center</h1>
+            </div>
+            
+            <div class="topbar-right">
+                <div class="topbar-search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search patients, doctors..." aria-label="Search">
+                </div>
+                <div class="admin-profile-pill">
+                    <div class="avatar-circle">SA</div>
+                    <span class="admin-name">Super Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="adm-body">
+            <div class="stat-row">
+                <div class="stat-box">
+                    <div class="stat-box-label">🏥 Partner Hospitals</div>
+                    <div class="stat-box-num primary-num">12</div>
+                    <div class="stat-box-sub">accredited medical facilities</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">🩺 Verified Doctors</div>
+                    <div class="stat-box-num blue-num">148</div>
+                    <div class="stat-box-sub">3 applications awaiting review</div>
+                </div>
+                <div class="stat-box gold-box">
+                    <div class="stat-box-label">⏳ Schedule Requests</div>
+                    <div class="stat-box-num gold-num">2</div>
+                    <div class="stat-box-sub">doctor schedule change requests</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">📋 Pending Bookings</div>
+                    <div class="stat-box-num teal-num">5</div>
+                    <div class="stat-box-sub">awaiting hospital confirmation</div>
+                </div>
+            </div>
+
+            <div class="action-banners">
+                <div class="banner-card banner-green">
+                    <div>
+                        <strong>📅 2 Schedule Changes</strong>
+                        <small>Doctors requested new consultation slots.</small>
+                    </div>
+                    <a href="schedule_approvals.html" class="btn btn-sm banner-btn-gold">Review</a>
+                </div>
+
+                <div class="banner-card banner-blue">
+                    <div>
+                        <strong>🩺 3 Doctor Applications</strong>
+                        <small>Awaiting medical license verification.</small>
+                    </div>
+                    <a href="verify_doctors.html" class="btn btn-sm banner-btn-white">Verify</a>
+                </div>
+            </div>
+
+            <div class="adm-grid">
+
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2>Recent Hospital Appointment Requests</h2>
+                            <small>Latest bookings and hospital alert status</small>
+                        </div>
+                        <a href="appointments.html" class="panel-link">View All →</a>
+                    </div>
+                    <div class="panel-body">
+                        <table class="adm-table">
+                            <thead>
+                                <tr>
+                                    <th>Token / Patient</th>
+                                    <th>Doctor &amp; Hospital</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong class="token-text">TK-8492</strong>
+                                        <small class="muted-text">John Doe</small>
+                                    </td>
+                                    <td>
+                                        <strong>Dr. Sarah Jenkins</strong>
+                                        <small class="muted-block">City General Hospital</small>
+                                    </td>
+                                    <td>Sep 4</td>
+                                    <td><span class="status-badge done small-badge">Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong class="token-text">TK-8491</strong>
+                                        <small class="muted-text">Jane Smith</small>
+                                    </td>
+                                    <td>
+                                        <strong>Dr. Robert Chen</strong>
+                                        <small class="muted-block">Metro Health Center</small>
+                                    </td>
+                                    <td>Sep 5</td>
+                                    <td><span class="status-badge waiting small-badge">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong class="token-text">TK-8490</strong>
+                                        <small class="muted-text">Alice Brown</small>
+                                    </td>
+                                    <td>
+                                        <strong>Dr. Michael Ross</strong>
+                                        <small class="muted-block">St. Jude Medical</small>
+                                    </td>
+                                    <td>Sep 6</td>
+                                    <td><span class="status-badge rejected small-badge">Rejected</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h2>Latest Registered Users</h2>
+                            <small>Patient, Doctor &amp; Admin registrations</small>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="adm-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong class="user-name">Emily Watson</strong>
+                                        <small class="muted-text">emily@example.com</small>
+                                    </td>
+                                    <td><span class="badge-tag">Patient</span></td>
+                                    <td><span class="status-badge done">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong class="user-name">Dr. William Vance</strong>
+                                        <small class="muted-text">vance@hospital.org</small>
+                                    </td>
+                                    <td><span class="badge-tag">Doctor</span></td>
+                                    <td><span class="status-badge waiting">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong class="user-name">Admin User</strong>
+                                        <small class="muted-text">admin@hams.org</small>
+                                    </td>
+                                    <td><span class="badge-tag">Admin</span></td>
+                                    <td><span class="status-badge done">Active</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function openSidebar(){ document.querySelector(".adm-sidebar").classList.add("open"); document.getElementById("sidebarOverlay").classList.add("open"); }
+function closeSidebar(){ document.querySelector(".adm-sidebar").classList.remove("open"); document.getElementById("sidebarOverlay").classList.remove("open"); }
+</script>
+</body>
+</html>
