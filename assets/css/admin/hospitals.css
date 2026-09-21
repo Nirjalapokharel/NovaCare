@@ -1,0 +1,93 @@
+/* Hospitals page — page-specific styles
+   Shared layout/tokens live in admin_style.css
+*/
+
+.hospitals-metrics .metric-card:last-child {
+    border-right: 0;
+}
+
+.hospital-panel {
+    box-shadow: 0 8px 25px rgba(15, 43, 34, 0.035);
+}
+
+.panel-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-select {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #f8fafc;
+    color: var(--text-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(11, 110, 79, 0.09);
+}
+
+.hospital-av {
+    background: #e7f4ee !important;
+    color: var(--primary) !important;
+}
+
+.count-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #e7f3fa;
+    color: #0369a1;
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.row-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.action-btn:hover {
+    background: var(--primary-dark);
+}
+
+.action-btn.ghost {
+    background: #fff;
+    color: var(--text-body);
+}
+
+.action-btn.ghost:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+@media (max-width: 800px) {
+    .adm-table th:nth-child(3),
+    .adm-table td:nth-child(3) {
+        display: none;
+    }
+}

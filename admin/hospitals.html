@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Hospitals | HAMS Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin/admin_style.css">
+    <link rel="stylesheet" href="../assets/css/admin/hospitals.css">
+</head>
+<body class="admin-page">
+
+<div class="adm-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="admin-shell">
+    <aside class="adm-sidebar" id="adminSidebar">
+        <div class="sidebar-top">
+            <a class="adm-brand" href="Dashboard.html">
+                <span class="adm-brand-icon">✚</span>
+                <div class="adm-brand-text">
+                    <strong>HAMS</strong>
+                    <small>Admin Console</small>
+                </div>
+            </a>
+            <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close navigation">×</button>
+        </div>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="adm-nav">
+            <a href="Dashboard.html">
+                <span class="nav-icon">⊞</span>
+                <span>Overview</span>
+            </a>
+            <a class="active" href="hospitals.html">
+                <span class="nav-icon">🏥</span>
+                <span>Manage Hospitals</span>
+            </a>
+            <a href="verify_doctor.html">
+                <span class="nav-icon">🩺</span>
+                <span>Verify &amp; Affiliations</span>
+                <span class="adm-badge">3</span>
+            </a>
+            <a href="schedule_approval.html">
+                <span class="nav-icon">📅</span>
+                <span>Schedule Approvals</span>
+                <span class="adm-badge">2</span>
+            </a>
+            <a href="appintments.html">
+                <span class="nav-icon">📋</span>
+                <span>Appointments</span>
+                <span class="adm-badge appointment-badge">5</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="network-status">
+                <span class="status-pulse"></span>
+                <div>
+                    <strong>Network Online</strong>
+                    <small>All systems operational</small>
+                </div>
+            </div>
+            <a class="signout-link" href="../login.html">
+                <span class="nav-icon">↩</span>
+                Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <main class="adm-content">
+        <header class="adm-topbar">
+            <button class="adm-mob-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
+
+            <div class="breadcrumb">
+                <span>HAMS</span>
+                <b>/</b>
+                <strong>Hospitals</strong>
+            </div>
+
+            <div class="topbar-right">
+                <div class="topbar-search">
+                    <span class="search-icon">⌕</span>
+                    <input type="text" placeholder="Search hospitals..." aria-label="Search">
+                </div>
+                <button class="topbar-icon-btn" aria-label="Notifications">
+                    ♧
+                    <span class="notif-dot"></span>
+                </button>
+                <div class="admin-profile-pill">
+                    <div class="avatar-circle">SA</div>
+                    <div class="profile-copy">
+                        <strong>Super Admin</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="adm-body">
+            <section class="welcome-row">
+                <div>
+                    <p class="eyebrow">Partner Network</p>
+                    <h1>Manage Hospitals</h1>
+                    <p class="welcome-text">View and manage accredited facilities across the HAMS network.</p>
+                </div>
+                <button class="overview-button" type="button">
+                    Add hospital <span>+</span>
+                </button>
+            </section>
+
+            <section class="metric-grid hospitals-metrics">
+                <article class="metric-card">
+                    <div class="metric-icon green">🏥</div>
+                    <div class="metric-copy">
+                        <span>Total Hospitals</span>
+                        <strong>12</strong>
+                        <small>Accredited facilities</small>
+                    </div>
+                </article>
+                <article class="metric-card">
+                    <div class="metric-icon blue">✓</div>
+                    <div class="metric-copy">
+                        <span>Active</span>
+                        <strong>11</strong>
+                        <small>Fully operational</small>
+                    </div>
+                </article>
+                <article class="metric-card">
+                    <div class="metric-icon gold">⏳</div>
+                    <div class="metric-copy">
+                        <span>Pending Review</span>
+                        <strong>1</strong>
+                        <small>Awaiting accreditation</small>
+                    </div>
+                </article>
+                <article class="metric-card">
+                    <div class="metric-icon teal">🩺</div>
+                    <div class="metric-copy">
+                        <span>Linked Doctors</span>
+                        <strong>148</strong>
+                        <small>Across all sites</small>
+                    </div>
+                </article>
+            </section>
+
+            <section class="panel hospital-panel">
+                <div class="panel-head">
+                    <div>
+                        <span class="panel-kicker">DIRECTORY</span>
+                        <h2>All Partner Hospitals</h2>
+                        <small>Accredited facilities and affiliation status</small>
+                    </div>
+                    <div class="panel-actions">
+                        <select class="filter-select" aria-label="Filter by status">
+                            <option>All status</option>
+                            <option>Active</option>
+                            <option>Pending</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="adm-table">
+                        <thead>
+                            <tr>
+                                <th>Hospital</th>
+                                <th>Location</th>
+                                <th>Doctors</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar hospital-av">CG</span>
+                                        <div>
+                                            <strong>City General Hospital</strong>
+                                            <small>ID: HOSP-001</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Kathmandu</strong>
+                                    <small class="muted-block">Bagmati Province</small>
+                                </td>
+                                <td><span class="count-pill">42</span></td>
+                                <td><span class="status-badge done small-badge">Active</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn">View</button>
+                                        <button type="button" class="action-btn ghost">Edit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar hospital-av">MH</span>
+                                        <div>
+                                            <strong>Metro Health Center</strong>
+                                            <small>ID: HOSP-002</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Lalitpur</strong>
+                                    <small class="muted-block">Bagmati Province</small>
+                                </td>
+                                <td><span class="count-pill">28</span></td>
+                                <td><span class="status-badge done small-badge">Active</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn">View</button>
+                                        <button type="button" class="action-btn ghost">Edit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar hospital-av">SJ</span>
+                                        <div>
+                                            <strong>St. Jude Medical</strong>
+                                            <small>ID: HOSP-003</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Bhaktapur</strong>
+                                    <small class="muted-block">Bagmati Province</small>
+                                </td>
+                                <td><span class="count-pill">19</span></td>
+                                <td><span class="status-badge done small-badge">Active</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn">View</button>
+                                        <button type="button" class="action-btn ghost">Edit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar hospital-av">HV</span>
+                                        <div>
+                                            <strong>Himalaya Valley Clinic</strong>
+                                            <small>ID: HOSP-004</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Pokhara</strong>
+                                    <small class="muted-block">Gandaki Province</small>
+                                </td>
+                                <td><span class="count-pill">15</span></td>
+                                <td><span class="status-badge waiting small-badge">Pending</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn">View</button>
+                                        <button type="button" class="action-btn ghost">Edit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar hospital-av">EC</span>
+                                        <div>
+                                            <strong>Eastern Care Hospital</strong>
+                                            <small>ID: HOSP-005</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Biratnagar</strong>
+                                    <small class="muted-block">Koshi Province</small>
+                                </td>
+                                <td><span class="count-pill">22</span></td>
+                                <td><span class="status-badge done small-badge">Active</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn">View</button>
+                                        <button type="button" class="action-btn ghost">Edit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script>
+function openSidebar() {
+    document.querySelector(".adm-sidebar").classList.add("open");
+    document.getElementById("sidebarOverlay").classList.add("open");
+}
+function closeSidebar() {
+    document.querySelector(".adm-sidebar").classList.remove("open");
+    document.getElementById("sidebarOverlay").classList.remove("open");
+}
+</script>
+</body>
+</html>

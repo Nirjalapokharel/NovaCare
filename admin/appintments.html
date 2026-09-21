@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments | HAMS Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin/admin_style.css">
+    <link rel="stylesheet" href="../assets/css/admin/appointments.css">
+</head>
+<body class="admin-page">
+
+<div class="adm-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="admin-shell">
+    <aside class="adm-sidebar" id="adminSidebar">
+        <div class="sidebar-top">
+            <a class="adm-brand" href="Dashboard.html">
+                <span class="adm-brand-icon">✚</span>
+                <div class="adm-brand-text">
+                    <strong>HAMS</strong>
+                    <small>Admin Console</small>
+                </div>
+            </a>
+            <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close navigation">×</button>
+        </div>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="adm-nav">
+            <a href="Dashboard.html">
+                <span class="nav-icon">⊞</span>
+                <span>Overview</span>
+            </a>
+            <a href="hospitals.html">
+                <span class="nav-icon">🏥</span>
+                <span>Manage Hospitals</span>
+            </a>
+            <a href="verify_doctor.html">
+                <span class="nav-icon">🩺</span>
+                <span>Verify &amp; Affiliations</span>
+                <span class="adm-badge">3</span>
+            </a>
+            <a href="schedule_approval.html">
+                <span class="nav-icon">📅</span>
+                <span>Schedule Approvals</span>
+                <span class="adm-badge">2</span>
+            </a>
+            <a class="active" href="appintments.html">
+                <span class="nav-icon">📋</span>
+                <span>Appointments</span>
+                <span class="adm-badge appointment-badge">5</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="network-status">
+                <span class="status-pulse"></span>
+                <div>
+                    <strong>Network Online</strong>
+                    <small>All systems operational</small>
+                </div>
+            </div>
+            <a class="signout-link" href="../login.html">
+                <span class="nav-icon">↩</span>
+                Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <main class="adm-content">
+        <header class="adm-topbar">
+            <button class="adm-mob-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
+
+            <div class="breadcrumb">
+                <span>HAMS</span>
+                <b>/</b>
+                <strong>Appointments</strong>
+            </div>
+
+            <div class="topbar-right">
+                <div class="topbar-search">
+                    <span class="search-icon">⌕</span>
+                    <input type="text" placeholder="Search appointments..." aria-label="Search">
+                </div>
+                <button class="topbar-icon-btn" aria-label="Notifications">
+                    ♧
+                    <span class="notif-dot"></span>
+                </button>
+                <div class="admin-profile-pill">
+                    <div class="avatar-circle">SA</div>
+                    <div class="profile-copy">
+                        <strong>Super Admin</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="adm-body">
+            <section class="welcome-row">
+                <div>
+                    <p class="eyebrow">Live Booking Queue</p>
+                    <h1>Appointments</h1>
+                    <p class="welcome-text">Monitor and manage patient booking requests across the network.</p>
+                </div>
+            </section>
+
+            <section class="metric-grid appt-metrics">
+                <article class="metric-card">
+                    <div class="metric-icon teal">📋</div>
+                    <div class="metric-copy">
+                        <span>Pending</span>
+                        <strong>5</strong>
+                        <small>Awaiting confirmation</small>
+                    </div>
+                </article>
+                <article class="metric-card">
+                    <div class="metric-icon green">✓</div>
+                    <div class="metric-copy">
+                        <span>Confirmed</span>
+                        <strong>24</strong>
+                        <small>Today &amp; tomorrow</small>
+                    </div>
+                </article>
+                <article class="metric-card">
+                    <div class="metric-icon blue">📅</div>
+                    <div class="metric-copy">
+                        <span>This week</span>
+                        <strong>87</strong>
+                        <small>Total bookings</small>
+                    </div>
+                </article>
+                <article class="metric-card">
+                    <div class="metric-icon gold">✗</div>
+                    <div class="metric-copy">
+                        <span>Rejected / Cancelled</span>
+                        <strong>3</strong>
+                        <small>Last 7 days</small>
+                    </div>
+                </article>
+            </section>
+
+            <section class="panel appointment-panel">
+                <div class="panel-head">
+                    <div>
+                        <span class="panel-kicker">ALL BOOKINGS</span>
+                        <h2>Appointment Requests</h2>
+                        <small>Latest bookings across the hospital network</small>
+                    </div>
+                    <div class="panel-actions">
+                        <select class="filter-select" aria-label="Filter by status">
+                            <option>All status</option>
+                            <option>Pending</option>
+                            <option>Confirmed</option>
+                            <option>Rejected</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="adm-table">
+                        <thead>
+                            <tr>
+                                <th>Patient / Token</th>
+                                <th>Doctor &amp; Hospital</th>
+                                <th>Date &amp; Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar">JD</span>
+                                        <div>
+                                            <strong>John Doe</strong>
+                                            <small>TK-8492</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Dr. Sarah Jenkins</strong>
+                                    <small class="muted-block">City General Hospital</small>
+                                </td>
+                                <td>
+                                    <span class="date-cell">Sep 4</span>
+                                    <small class="muted-block">10:30 AM</small>
+                                </td>
+                                <td><span class="status-badge done small-badge">Confirmed</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn ghost">View</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar">JS</span>
+                                        <div>
+                                            <strong>Jane Smith</strong>
+                                            <small>TK-8491</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Dr. Robert Chen</strong>
+                                    <small class="muted-block">Metro Health Center</small>
+                                </td>
+                                <td>
+                                    <span class="date-cell">Sep 5</span>
+                                    <small class="muted-block">02:00 PM</small>
+                                </td>
+                                <td><span class="status-badge waiting small-badge">Pending</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn approve">Confirm</button>
+                                        <button type="button" class="action-btn reject">Reject</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar">AB</span>
+                                        <div>
+                                            <strong>Alice Brown</strong>
+                                            <small>TK-8490</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Dr. Michael Ross</strong>
+                                    <small class="muted-block">St. Jude Medical</small>
+                                </td>
+                                <td>
+                                    <span class="date-cell">Sep 6</span>
+                                    <small class="muted-block">11:15 AM</small>
+                                </td>
+                                <td><span class="status-badge rejected small-badge">Rejected</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn ghost">View</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar">RK</span>
+                                        <div>
+                                            <strong>Ramesh KC</strong>
+                                            <small>TK-8489</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Dr. Priya Koirala</strong>
+                                    <small class="muted-block">Metro Health Center</small>
+                                </td>
+                                <td>
+                                    <span class="date-cell">Sep 7</span>
+                                    <small class="muted-block">09:00 AM</small>
+                                </td>
+                                <td><span class="status-badge waiting small-badge">Pending</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn approve">Confirm</button>
+                                        <button type="button" class="action-btn reject">Reject</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar">ST</span>
+                                        <div>
+                                            <strong>Sita Thapa</strong>
+                                            <small>TK-8488</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>Dr. William Vance</strong>
+                                    <small class="muted-block">City General Hospital</small>
+                                </td>
+                                <td>
+                                    <span class="date-cell">Sep 8</span>
+                                    <small class="muted-block">03:30 PM</small>
+                                </td>
+                                <td><span class="status-badge waiting small-badge">Pending</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn approve">Confirm</button>
+                                        <button type="button" class="action-btn reject">Reject</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script>
+function openSidebar() {
+    document.querySelector(".adm-sidebar").classList.add("open");
+    document.getElementById("sidebarOverlay").classList.add("open");
+}
+function closeSidebar() {
+    document.querySelector(".adm-sidebar").classList.remove("open");
+    document.getElementById("sidebarOverlay").classList.remove("open");
+}
+</script>
+</body>
+</html>

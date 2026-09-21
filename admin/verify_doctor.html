@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Verification | HAMS Admin</title>
+    <title>Verify &amp; Affiliations | HAMS Console</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/admin/admin_style.css">
-    <link rel="stylesheet" href="../assets/css/admin/adm-doc_verify.css">
+    <link rel="stylesheet" href="../assets/css/admin/verify_doctor.css">
 </head>
-<body class="admin-page verify-page">
+<body class="admin-page">
 
 <div class="adm-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
-<div class="admin-shell">       
+<div class="admin-shell">
     <aside class="adm-sidebar" id="adminSidebar">
         <div class="sidebar-top">
-            <a class="adm-brand" href="dashboard.html">
+            <a class="adm-brand" href="Dashboard.html">
                 <span class="adm-brand-icon">✚</span>
                 <div class="adm-brand-text">
                     <strong>HAMS</strong>
@@ -30,7 +30,7 @@
         <div class="sidebar-section-title">Workspace</div>
 
         <nav class="adm-nav">
-            <a href="dashboard.html">
+            <a href="Dashboard.html">
                 <span class="nav-icon">⊞</span>
                 <span>Overview</span>
             </a>
@@ -43,12 +43,12 @@
                 <span>Verify &amp; Affiliations</span>
                 <span class="adm-badge">3</span>
             </a>
-            <a href="schedule_approvals.html">
+            <a href="schedule_approval.html">
                 <span class="nav-icon">📅</span>
                 <span>Schedule Approvals</span>
                 <span class="adm-badge">2</span>
             </a>
-            <a href="appointments.html">
+            <a href="appintments.html">
                 <span class="nav-icon">📋</span>
                 <span>Appointments</span>
                 <span class="adm-badge appointment-badge">5</span>
@@ -77,914 +77,180 @@
             <div class="breadcrumb">
                 <span>HAMS</span>
                 <b>/</b>
-                <strong>Verify &amp; Affiliations</strong>
+                <strong>Verify Doctors</strong>
             </div>
 
             <div class="topbar-right">
                 <div class="topbar-search">
                     <span class="search-icon">⌕</span>
-                    <input type="text" placeholder="Search records..." aria-label="Search">
+                    <input type="text" placeholder="Search doctors..." aria-label="Search">
                 </div>
-
                 <button class="topbar-icon-btn" aria-label="Notifications">
                     ♧
                     <span class="notif-dot"></span>
                 </button>
-
                 <div class="admin-profile-pill">
                     <div class="avatar-circle">SA</div>
                     <div class="profile-copy">
                         <strong>Super Admin</strong>
                         <small>Administrator</small>
                     </div>
-                    <span class="profile-chevron">⌄</span>
                 </div>
             </div>
         </header>
 
-            <div class="content">
+        <div class="adm-body">
+            <section class="welcome-row">
+                <div>
+                    <p class="eyebrow">Credentials &amp; Affiliations</p>
+                    <h1>Verify Doctors</h1>
+                    <p class="welcome-text">Review medical licenses and hospital affiliations pending approval.</p>
+                </div>
+            </section>
 
-                <!-- PAGE INTRO -->
-                <div class="page-intro">
+            <section class="priority-strip verify-priority">
+                <div class="priority-title">
+                    <span class="priority-mark">!</span>
                     <div>
-                        <h2>Doctors & Affiliations</h2>
-                        <p>
-                            Review doctor registrations, verify professional
-                            credentials, and manage their hospital affiliations.
-                        </p>
+                        <strong>3 applications</strong>
+                        <small>Awaiting license verification</small>
                     </div>
-
-                    <div class="summary">
-                        <div class="summary-box pending">
-                            <span>Pending</span>
-                            <strong>3</strong>
-                        </div>
-                        <div class="summary-box verified">
-                            <span>Verified</span>
-                            <strong>18</strong>
-                        </div>
+                </div>
+                <div class="priority-item static">
+                    <span class="priority-number blue">02</span>
+                    <div>
+                        <strong>New affiliations</strong>
+                        <small>Hospital link requests</small>
                     </div>
+                </div>
+                <div class="priority-item static">
+                    <span class="priority-number gold">01</span>
+                    <div>
+                        <strong>License renewals</strong>
+                        <small>Expiring within 30 days</small>
+                    </div>
+                </div>
+            </section>
 
+            <section class="panel verify-panel">
+                <div class="panel-head">
+                    <div>
+                        <span class="panel-kicker">QUEUE</span>
+                        <h2>Pending Verification</h2>
+                        <small>Doctor applications requiring review</small>
+                    </div>
+                    <div class="panel-actions">
+                        <select class="filter-select" aria-label="Filter by type">
+                            <option>All types</option>
+                            <option>New registration</option>
+                            <option>Affiliation</option>
+                            <option>License renewal</option>
+                        </select>
+                    </div>
                 </div>
 
-                <!-- =================================================
-                 PENDING VERIFICATION
-            ================================================== -->
-                <section class="section">
-                    <div class="section-header">
-                        <div class="section-title">
-                            <div class="section-icon">
-                                ⏳
-                            </div>
-                            <div>
-                                <h3>Pending Verification</h3>
-                                <p>
-                                    Applications waiting for credential review
-                                </p>
-                            </div>
-                        </div>
-                        <span class="section-count">
-                            3 applications
-                        </span>
-                    </div>
-
-                    <div class="doctor-list">
-
-                        <!-- DOCTOR 1 -->
-                        <article class="pending-card">
-                            <div class="doctor-card-main">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">
-                                        AS
-                                    </div>
-                                    <div>
-                                        <h4>
-                                            Dr. Aarav Sharma
-                                        </h4>
-                                        <p>
-                                            MBBS, MD
-                                        </p>
-                                        <div class="doctor-email">
-                                            aarav.sharma@example.com
+                <div class="table-wrap">
+                    <table class="adm-table">
+                        <thead>
+                            <tr>
+                                <th>Doctor</th>
+                                <th>Specialty</th>
+                                <th>Hospital</th>
+                                <th>Submitted</th>
+                                <th>Type</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar doctor-av">WV</span>
+                                        <div>
+                                            <strong>Dr. William Vance</strong>
+                                            <small>vance@hospital.org</small>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="credential-grid">
-                                    <div class="credential">
-                                        <span>Specialization</span>
-                                        <strong>
-                                            <span class="specialization">
-                                                Cardiology
-                                            </span>
-                                        </strong>
+                                </td>
+                                <td>Cardiology</td>
+                                <td>
+                                    <strong>City General</strong>
+                                    <small class="muted-block">Kathmandu</small>
+                                </td>
+                                <td><span class="date-cell">Sep 18</span></td>
+                                <td><span class="type-tag new">New registration</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn approve">Approve</button>
+                                        <button type="button" class="action-btn reject">Reject</button>
                                     </div>
-
-                                    <div class="credential">
-                                        <span>License Number</span>
-
-                                        <strong>
-                                            NMC-45872
-                                        </strong>
-                                    </div>
-
-                                    <div class="credential">
-                                        <span>Experience</span>
-                                        <strong>
-                                            8 Years
-                                        </strong>
-                                    </div>
-                                </div>
-
-                                <div class="hospital-control">
-                                    <label>
-                                        Initial Hospital Assignment
-                                    </label>
-
-                                    <select>
-                                        <option>
-                                            Select hospital...
-                                        </option>
-
-                                        <option>
-                                            City Care Hospital
-                                        </option>
-
-                                        <option>
-                                            Green Valley Hospital
-                                        </option>
-
-                                        <option>
-                                            Sunrise Medical Center
-                                        </option>
-                                    </select>
-
-                                    <div class="hospital-hint">
-                                        Optional — can be assigned later
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="doctor-actions">
-                                <button class="btn btn-reject">
-                                    Reject Application
-                                </button>
-                                <button class="btn btn-approve">
-                                    ✓ Approve Doctor
-                                </button>
-                            </div>
-                        </article>
-
-                        <!-- DOCTOR 2 -->
-                        <article class="pending-card">
-                            <div class="doctor-card-main">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">
-                                        RP
-                                    </div>
-                                    <div>
-                                        <h4>
-                                            Dr. Riya Pradhan
-                                        </h4>
-                                        <p>
-                                            MBBS, MS
-                                        </p>
-                                        <div class="doctor-email">
-                                            riya.pradhan@example.com
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar doctor-av">PK</span>
+                                        <div>
+                                            <strong>Dr. Priya Koirala</strong>
+                                            <small>priya.k@metro.health</small>
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="credential-grid">
-                                    <div class="credential">
-                                        <span>Specialization</span>
-                                        <strong>
-                                            <span class="specialization">
-                                                Orthopedics
-                                            </span>
-                                        </strong>
+                                </td>
+                                <td>Pediatrics</td>
+                                <td>
+                                    <strong>Metro Health</strong>
+                                    <small class="muted-block">Lalitpur</small>
+                                </td>
+                                <td><span class="date-cell">Sep 19</span></td>
+                                <td><span class="type-tag affiliation">Affiliation</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn approve">Approve</button>
+                                        <button type="button" class="action-btn reject">Reject</button>
                                     </div>
-
-                                    <div class="credential">
-                                        <span>License Number</span>
-
-                                        <strong>
-                                            NMC-62391
-                                        </strong>
-                                    </div>
-
-                                    <div class="credential">
-                                        <span>Experience</span>
-
-                                        <strong>
-                                            5 Years
-                                        </strong>
-                                    </div>
-                                </div>
-
-                                <div class="hospital-control">
-                                    <label>
-                                        Initial Hospital Assignment
-                                    </label>
-
-                                    <select>
-                                        <option>
-                                            Select hospital...
-                                        </option>
-
-                                        <option>
-                                            City Care Hospital
-                                        </option>
-
-                                        <option>
-                                            Green Valley Hospital
-                                        </option>
-
-                                        <option>
-                                            Sunrise Medical Center
-                                        </option>
-                                    </select>
-
-                                    <div class="hospital-hint">
-                                        Optional — can be assigned later
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="doctor-actions">
-                                <button class="btn btn-reject">
-                                    Reject Application
-                                </button>
-
-                                <button class="btn btn-approve">
-                                    ✓ Approve Doctor
-                                </button>
-                            </div>
-
-                        </article>
-
-                        <!-- DOCTOR 3 -->
-                        <article class="pending-card">
-                            <div class="doctor-card-main">
-                                <div class="doctor-info">
-                                    <div class="doctor-avatar">
-                                        SK
-                                    </div>
-                                    <div>
-
-                                        <h4>
-                                            Dr. Suman Karki
-                                        </h4>
-
-                                        <p>
-                                            MBBS, MD
-                                        </p>
-
-                                        <div class="doctor-email">
-                                            suman.karki@example.com
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="person-cell">
+                                        <span class="mini-avatar doctor-av">RS</span>
+                                        <div>
+                                            <strong>Dr. Rajesh Sharma</strong>
+                                            <small>r.sharma@stjude.np</small>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="credential-grid">
-                                    <div class="credential">
-                                        <span>Specialization</span>
-                                        <strong>
-                                            <span class="specialization">
-                                                Dermatology
-                                            </span>
-                                        </strong>
+                                </td>
+                                <td>Orthopedics</td>
+                                <td>
+                                    <strong>St. Jude Medical</strong>
+                                    <small class="muted-block">Bhaktapur</small>
+                                </td>
+                                <td><span class="date-cell">Sep 20</span></td>
+                                <td><span class="type-tag renewal">License renewal</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button type="button" class="action-btn approve">Approve</button>
+                                        <button type="button" class="action-btn reject">Reject</button>
                                     </div>
-
-                                    <div class="credential">
-                                        <span>License Number</span>
-                                        <strong>
-                                            NMC-78124
-                                        </strong>
-                                    </div>
-                                    <div class="credential">
-                                        <span>Experience</span>
-                                        <strong>
-                                            11 Years
-                                        </strong>
-                                    </div>
-                                </div>
-
-                                <div class="hospital-control">
-                                    <label>
-                                        Initial Hospital Assignment
-                                    </label>
-                                    <select>
-                                        <option>
-                                            Select hospital...
-                                        </option>
-
-                                        <option>
-                                            City Care Hospital
-                                        </option>
-
-                                        <option>
-                                            Green Valley Hospital
-                                        </option>
-
-                                        <option>
-                                            Sunrise Medical Center
-                                        </option>
-                                    </select>
-
-                                    <div class="hospital-hint">
-                                        Optional — can be assigned later
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="doctor-actions">
-
-                                <button class="btn btn-reject">
-                                    Reject Application
-                                </button>
-
-                                <button class="btn btn-approve">
-                                    ✓ Approve Doctor
-                                </button>
-
-                            </div>
-
-                        </article>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =================================================
-                 VERIFIED DOCTORS
-            ================================================== -->
-
-                <section class="section">
-
-                    <div class="section-header">
-
-                        <div class="section-title">
-
-                            <div class="section-icon"
-                                style="background:var(--success-soft);color:var(--success)">
-                                ✓
-                            </div>
-
-                            <div>
-                                <h3>Verified Doctors</h3>
-
-                                <p>
-                                    Manage hospital affiliations and assignments
-                                </p>
-                            </div>
-
-                        </div>
-
-                        <span class="section-count"
-                            style="background:var(--success-soft);color:var(--success)">
-                            18 doctors
-                        </span>
-
-                    </div>
-
-
-                    <div class="verified-grid">
-
-
-                        <!-- VERIFIED DOCTOR 1 -->
-
-                        <article class="verified-card">
-
-                            <div class="verified-top">
-
-                                <div class="verified-doctor">
-
-                                    <div class="verified-avatar">
-                                        AM
-                                    </div>
-
-                                    <div>
-                                        <h4>
-                                            Dr. Anish Mehta
-                                        </h4>
-
-                                        <p>
-                                            Neurologist · MD
-                                        </p>
-                                    </div>
-
-                                </div>
-
-                                <span class="verified-badge">
-                                    ✓ Verified
-                                </span>
-
-                            </div>
-
-
-                            <div class="doctor-meta">
-
-                                <div class="meta-item">
-                                    <span>Login ID</span>
-                                    <strong>DOC-1024</strong>
-                                </div>
-
-                                <div class="meta-item">
-                                    <span>License</span>
-                                    <strong>NMC-34891</strong>
-                                </div>
-
-                                <div class="meta-item">
-                                    <span>Experience</span>
-                                    <strong>12 Years</strong>
-                                </div>
-
-                            </div>
-
-
-                            <div class="affiliation-header">
-
-                                <span>
-                                    Hospital Affiliations
-                                </span>
-
-                                <small>
-                                    2 active
-                                </small>
-
-                            </div>
-
-
-                            <div class="hospital-list">
-
-                                <div class="hospital-row">
-
-                                    <div class="hospital-name">
-
-                                        <div class="hospital-icon">
-                                            🏥
-                                        </div>
-
-                                        City Care Hospital
-
-                                    </div>
-
-                                    <span class="hospital-status active">
-                                        ● Active
-                                    </span>
-
-                                </div>
-
-
-                                <div class="hospital-row">
-
-                                    <div class="hospital-name">
-
-                                        <div class="hospital-icon">
-                                            🏥
-                                        </div>
-
-                                        Green Valley Hospital
-
-                                    </div>
-
-                                    <span class="hospital-status active">
-                                        ● Active
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="card-footer">
-
-                                <select>
-
-                                    <option>
-                                        Add another hospital...
-                                    </option>
-
-                                    <option>
-                                        Sunrise Medical Center
-                                    </option>
-
-                                    <option>
-                                        Metro Hospital
-                                    </option>
-
-                                </select>
-
-                                <button class="assign-btn">
-                                    + Assign
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <!-- VERIFIED DOCTOR 2 -->
-
-                        <article class="verified-card">
-
-                            <div class="verified-top">
-
-                                <div class="verified-doctor">
-
-                                    <div class="verified-avatar">
-                                        NP
-                                    </div>
-
-                                    <div>
-                                        <h4>
-                                            Dr. Nisha Pandey
-                                        </h4>
-
-                                        <p>
-                                            Pediatrician · MD
-                                        </p>
-                                    </div>
-
-                                </div>
-
-                                <span class="verified-badge">
-                                    ✓ Verified
-                                </span>
-
-                            </div>
-
-
-                            <div class="doctor-meta">
-
-                                <div class="meta-item">
-                                    <span>Login ID</span>
-                                    <strong>DOC-1031</strong>
-                                </div>
-
-                                <div class="meta-item">
-                                    <span>License</span>
-                                    <strong>NMC-59201</strong>
-                                </div>
-
-                                <div class="meta-item">
-                                    <span>Experience</span>
-                                    <strong>7 Years</strong>
-                                </div>
-
-                            </div>
-
-
-                            <div class="affiliation-header">
-
-                                <span>
-                                    Hospital Affiliations
-                                </span>
-
-                                <small>
-                                    1 active
-                                </small>
-
-                            </div>
-
-
-                            <div class="hospital-list">
-
-                                <div class="hospital-row">
-
-                                    <div class="hospital-name">
-
-                                        <div class="hospital-icon">
-                                            🏥
-                                        </div>
-
-                                        Sunrise Medical Center
-
-                                    </div>
-
-                                    <span class="hospital-status active">
-                                        ● Active
-                                    </span>
-
-                                </div>
-
-
-                                <div class="hospital-row left">
-
-                                    <div class="hospital-name">
-
-                                        <div class="hospital-icon">
-                                            🏥
-                                        </div>
-
-                                        City Care Hospital
-
-                                    </div>
-
-                                    <span class="hospital-status left">
-                                        Left
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="card-footer">
-
-                                <select>
-
-                                    <option>
-                                        Add another hospital...
-                                    </option>
-
-                                    <option>
-                                        Green Valley Hospital
-                                    </option>
-
-                                    <option>
-                                        Metro Hospital
-                                    </option>
-
-                                </select>
-
-                                <button class="assign-btn">
-                                    + Assign
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <!-- VERIFIED DOCTOR 3 -->
-
-                        <article class="verified-card">
-
-                            <div class="verified-top">
-
-                                <div class="verified-doctor">
-
-                                    <div class="verified-avatar">
-                                        RS
-                                    </div>
-
-                                    <div>
-                                        <h4>
-                                            Dr. Rahul Shah
-                                        </h4>
-
-                                        <p>
-                                            Cardiologist · MD
-                                        </p>
-                                    </div>
-
-                                </div>
-
-                                <span class="verified-badge">
-                                    ✓ Verified
-                                </span>
-
-                            </div>
-
-
-                            <div class="doctor-meta">
-
-                                <div class="meta-item">
-                                    <span>Login ID</span>
-                                    <strong>DOC-1047</strong>
-                                </div>
-
-                                <div class="meta-item">
-                                    <span>License</span>
-                                    <strong>NMC-42187</strong>
-                                </div>
-
-                                <div class="meta-item">
-                                    <span>Experience</span>
-                                    <strong>15 Years</strong>
-                                </div>
-
-                            </div>
-
-
-                            <div class="affiliation-header">
-
-                                <span>
-                                    Hospital Affiliations
-                                </span>
-
-                                <small>
-                                    1 active
-                                </small>
-
-                            </div>
-
-
-                            <div class="hospital-list">
-
-                                <div class="hospital-row">
-
-                                    <div class="hospital-name">
-
-                                        <div class="hospital-icon">
-                                            🏥
-                                        </div>
-
-                                        Green Valley Hospital
-
-                                    </div>
-
-                                    <span class="hospital-status active">
-                                        ● Active
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="card-footer">
-
-                                <select>
-
-                                    <option>
-                                        Add another hospital...
-                                    </option>
-
-                                    <option>
-                                        City Care Hospital
-                                    </option>
-
-                                    <option>
-                                        Sunrise Medical Center
-                                    </option>
-
-                                </select>
-
-                                <button class="assign-btn">
-                                    + Assign
-                                </button>
-
-                            </div>
-
-                        </article>
-
-
-                        <!-- VERIFIED DOCTOR 4 -->
-
-                        <article class="verified-card">
-
-                            <div class="verified-top">
-
-                                <div class="verified-doctor">
-
-                                    <div class="verified-avatar">
-                                        SM
-                                    </div>
-
-                                    <div>
-                                        <h4>
-                                            Dr. Sara Mishra
-                                        </h4>
-
-                                        <p>
-                                            General Physician · MBBS
-                                        </p>
-                                    </div>
-
-                                </div>
-
-                                <span class="verified-badge">
-                                    ✓ Verified
-                                </span>
-
-                            </div>
-
-
-                            <div class="doctor-meta">
-
-                                <div class="meta-item">
-                                    <span>Login ID</span>
-                                    <strong>DOC-1053</strong>
-                                </div>
-
-                                <div class="meta-item">
-                                    <span>License</span>
-                                    <strong>NMC-67234</strong>
-                                </div>
-
-                                <div class="meta-item">
-                                    <span>Experience</span>
-                                    <strong>9 Years</strong>
-                                </div>
-
-                            </div>
-
-
-                            <div class="affiliation-header">
-
-                                <span>
-                                    Hospital Affiliations
-                                </span>
-
-                                <small>
-                                    2 active
-                                </small>
-
-                            </div>
-
-
-                            <div class="hospital-list">
-
-                                <div class="hospital-row">
-
-                                    <div class="hospital-name">
-
-                                        <div class="hospital-icon">
-                                            🏥
-                                        </div>
-
-                                        Metro Hospital
-                                    </div>
-
-                                    <span class="hospital-status active">
-                                        ● Active
-                                    </span>
-
-                                </div>
-
-
-                                <div class="hospital-row">
-
-                                    <div class="hospital-name">
-
-                                        <div class="hospital-icon">
-                                            🏥
-                                        </div>
-
-                                        City Care Hospital
-
-                                    </div>
-
-                                    <span class="hospital-status active">
-                                        ● Active
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="card-footer">
-
-                                <select>
-
-                                    <option>
-                                        Add another hospital...
-                                    </option>
-
-                                    <option>
-                                        Green Valley Hospital
-                                    </option>
-
-                                    <option>
-                                        Sunrise Medical Center
-                                    </option>
-
-                                </select>
-
-                                <button class="assign-btn">
-                                    + Assign
-                                </button>
-
-                            </div>
-
-                        </article>
-
-                    </div>
-
-                </section>
-
-            </div>
-
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
     </main>
 </div>
 
 <script>
 function openSidebar() {
-    document.getElementById('adminSidebar').classList.add('open');
-    document.getElementById('sidebarOverlay').classList.add('show');
+    document.querySelector(".adm-sidebar").classList.add("open");
+    document.getElementById("sidebarOverlay").classList.add("open");
 }
-
 function closeSidebar() {
-    document.getElementById('adminSidebar').classList.remove('open');
-    document.getElementById('sidebarOverlay').classList.remove('show');
+    document.querySelector(".adm-sidebar").classList.remove("open");
+    document.getElementById("sidebarOverlay").classList.remove("open");
 }
 </script>
-
 </body>
 </html>

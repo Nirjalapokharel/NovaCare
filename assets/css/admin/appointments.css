@@ -1,0 +1,90 @@
+/* Appointments page — page-specific styles
+   Shared layout/tokens live in admin_style.css
+*/
+
+.appt-metrics .metric-card:last-child {
+    border-right: 0;
+}
+
+.appointment-panel {
+    box-shadow: 0 8px 25px rgba(15, 43, 34, 0.035);
+}
+
+.panel-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-select {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #f8fafc;
+    color: var(--text-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(11, 110, 79, 0.09);
+}
+
+.row-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.action-btn.approve {
+    background: var(--primary);
+    color: #fff;
+}
+
+.action-btn.approve:hover {
+    background: var(--primary-dark);
+}
+
+.action-btn.reject {
+    background: #fff;
+    border-color: var(--border);
+    color: #991b1b;
+}
+
+.action-btn.reject:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+.action-btn.ghost {
+    background: #fff;
+    border-color: var(--border);
+    color: var(--text-body);
+}
+
+.action-btn.ghost:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+@media (max-width: 800px) {
+    .adm-table th:nth-child(3),
+    .adm-table td:nth-child(3) {
+        display: none;
+    }
+}

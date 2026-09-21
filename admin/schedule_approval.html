@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Approvals | HAMS Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin/admin_style.css">
+    <link rel="stylesheet" href="../assets/css/admin/schedule_approval.css">
+</head>
+<body class="admin-page">
+
+<div class="adm-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="admin-shell">
+    <aside class="adm-sidebar" id="adminSidebar">
+        <div class="sidebar-top">
+            <a class="adm-brand" href="Dashboard.html">
+                <span class="adm-brand-icon">✚</span>
+                <div class="adm-brand-text">
+                    <strong>HAMS</strong>
+                    <small>Admin Console</small>
+                </div>
+            </a>
+            <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close navigation">×</button>
+        </div>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="adm-nav">
+            <a href="Dashboard.html">
+                <span class="nav-icon">⊞</span>
+                <span>Overview</span>
+            </a>
+            <a href="hospitals.html">
+                <span class="nav-icon">🏥</span>
+                <span>Manage Hospitals</span>
+            </a>
+            <a href="verify_doctor.html">
+                <span class="nav-icon">🩺</span>
+                <span>Verify &amp; Affiliations</span>
+                <span class="adm-badge">3</span>
+            </a>
+            <a class="active" href="schedule_approval.html">
+                <span class="nav-icon">📅</span>
+                <span>Schedule Approvals</span>
+                <span class="adm-badge">2</span>
+            </a>
+            <a href="appintments.html">
+                <span class="nav-icon">📋</span>
+                <span>Appointments</span>
+                <span class="adm-badge appointment-badge">5</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="network-status">
+                <span class="status-pulse"></span>
+                <div>
+                    <strong>Network Online</strong>
+                    <small>All systems operational</small>
+                </div>
+            </div>
+            <a class="signout-link" href="../login.html">
+                <span class="nav-icon">↩</span>
+                Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <main class="adm-content">
+        <header class="adm-topbar">
+            <button class="adm-mob-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
+
+            <div class="breadcrumb">
+                <span>HAMS</span>
+                <b>/</b>
+                <strong>Schedule Approvals</strong>
+            </div>
+
+            <div class="topbar-right">
+                <div class="topbar-search">
+                    <span class="search-icon">⌕</span>
+                    <input type="text" placeholder="Search schedules..." aria-label="Search">
+                </div>
+                <button class="topbar-icon-btn" aria-label="Notifications">
+                    ♧
+                    <span class="notif-dot"></span>
+                </button>
+                <div class="admin-profile-pill">
+                    <div class="avatar-circle">SA</div>
+                    <div class="profile-copy">
+                        <strong>Super Admin</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="adm-body">
+            <section class="welcome-row">
+                <div>
+                    <p class="eyebrow">Consultation Slots</p>
+                    <h1>Schedule Approvals</h1>
+                    <p class="welcome-text">Review and approve doctor schedule change requests.</p>
+                </div>
+            </section>
+
+            <section class="metric-grid schedule-metrics">
+                <article class="metric-card attention">
+                    <div class="metric-icon gold">⏳</div>
+                    <div class="metric-copy">
+                        <span>Pending</span>
+                        <strong>2</strong>
+                        <small>Need your approval</small>
+                    </div>
+                </article>
+                <article class="metric-card">
+                    <div class="metric-icon green">✓</div>
+                    <div class="metric-copy">
+                        <span>Approved today</span>
+                        <strong>4</strong>
+                        <small>Slots published</small>
+                    </div>
+                </article>
+                <article class="metric-card">
+                    <div class="metric-icon blue">📅</div>
+                    <div class="metric-copy">
+                        <span>This week</span>
+                        <strong>18</strong>
+                        <small>Total requests</small>
+                    </div>
+                </article>
+                <article class="metric-card">
+                    <div class="metric-icon teal">✗</div>
+                    <div class="metric-copy">
+                        <span>Rejected</span>
+                        <strong>1</strong>
+                        <small>This week</small>
+                    </div>
+                </article>
+            </section>
+
+            <section class="panel schedule-panel">
+                <div class="panel-head">
+                    <div>
+                        <span class="panel-kicker">PENDING</span>
+                        <h2>Schedule Change Requests</h2>
+                        <small>New consultation slots submitted by doctors</small>
+                    </div>
+                </div>
+
+                <div class="schedule-cards">
+                    <article class="schedule-card">
+                        <div class="schedule-card-top">
+                            <div class="person-cell">
+                                <span class="mini-avatar doctor-av">SJ</span>
+                                <div>
+                                    <strong>Dr. Sarah Jenkins</strong>
+                                    <small>City General Hospital</small>
+                                </div>
+                            </div>
+                            <span class="status-badge waiting small-badge">Pending</span>
+                        </div>
+                        <div class="schedule-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Day</span>
+                                <strong>Thursday</strong>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Time</span>
+                                <strong>09:00 – 12:00</strong>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Slots</span>
+                                <strong>12 slots</strong>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Submitted</span>
+                                <strong>Sep 19</strong>
+                            </div>
+                        </div>
+                        <p class="schedule-note">Adding morning cardiology clinic for outpatients.</p>
+                        <div class="row-actions">
+                            <button type="button" class="action-btn approve">Approve</button>
+                            <button type="button" class="action-btn reject">Reject</button>
+                            <button type="button" class="action-btn ghost">View details</button>
+                        </div>
+                    </article>
+
+                    <article class="schedule-card">
+                        <div class="schedule-card-top">
+                            <div class="person-cell">
+                                <span class="mini-avatar doctor-av">RC</span>
+                                <div>
+                                    <strong>Dr. Robert Chen</strong>
+                                    <small>Metro Health Center</small>
+                                </div>
+                            </div>
+                            <span class="status-badge waiting small-badge">Pending</span>
+                        </div>
+                        <div class="schedule-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Day</span>
+                                <strong>Saturday</strong>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Time</span>
+                                <strong>14:00 – 17:00</strong>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Slots</span>
+                                <strong>8 slots</strong>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Submitted</span>
+                                <strong>Sep 20</strong>
+                            </div>
+                        </div>
+                        <p class="schedule-note">Weekend neurology follow-up clinic.</p>
+                        <div class="row-actions">
+                            <button type="button" class="action-btn approve">Approve</button>
+                            <button type="button" class="action-btn reject">Reject</button>
+                            <button type="button" class="action-btn ghost">View details</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script>
+function openSidebar() {
+    document.querySelector(".adm-sidebar").classList.add("open");
+    document.getElementById("sidebarOverlay").classList.add("open");
+}
+function closeSidebar() {
+    document.querySelector(".adm-sidebar").classList.remove("open");
+    document.getElementById("sidebarOverlay").classList.remove("open");
+}
+</script>
+</body>
+</html>
