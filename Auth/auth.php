@@ -71,7 +71,7 @@ function require_login(array $allowedRoles = []): void
     $_SESSION['last_activity'] = time();
 
     /*
-     * Verify the logged-in user against the database.
+     * Verifying the logged-in user against the database.
      */
     $stmt = getDB()->prepare(
         'SELECT role, status, force_password_change
@@ -84,7 +84,7 @@ function require_login(array $allowedRoles = []): void
     $user = $stmt->fetch();
 
     /*
-     * Make sure the account still exists, is active,
+     * Making sure the account still exists, is active,
      * and the session role matches the database role.
      */
     if (
@@ -97,8 +97,7 @@ function require_login(array $allowedRoles = []): void
     }
 
     /*
-     * Keep the password-change requirement synchronized
-     * with the database.
+     * Storing the force_password_change flag in the session.
      */
     $_SESSION['force_password_change'] =
         (bool) $user['force_password_change'];
@@ -117,8 +116,9 @@ function require_login(array $allowedRoles = []): void
 
     /*
      * If the user logged in using a temporary password,
-     * force them to change it before accessing other pages.
+     * forcing them to change it before accessing other pages.
      */
+
     if (!empty($_SESSION['force_password_change'])) {
 
         $currentPage = basename($_SERVER['PHP_SELF'] ?? '');

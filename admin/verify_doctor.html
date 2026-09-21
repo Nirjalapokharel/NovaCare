@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,94 +7,100 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/admin/admin_style.css">
     <link rel="stylesheet" href="../assets/css/admin/adm-doc_verify.css">
 </head>
+<body class="admin-page verify-page">
 
-<body>
+<div class="adm-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
-    <div class="admin-shell">
-
-        <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
-        <aside class="sidebar">
-
-            <!-- Brand -->
-            <div class="brand">
-                <div class="brand-icon">✚</div>
-
-                <div>
+<div class="admin-shell">       
+    <aside class="adm-sidebar" id="adminSidebar">
+        <div class="sidebar-top">
+            <a class="adm-brand" href="dashboard.html">
+                <span class="adm-brand-icon">✚</span>
+                <div class="adm-brand-text">
                     <strong>HAMS</strong>
                     <small>Admin Console</small>
                 </div>
-            </div>
+            </a>
+            <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close navigation">×</button>
+        </div>
 
+        <div class="sidebar-section-title">Workspace</div>
 
-            <!-- Main Navigation -->
-            <nav class="nav">
-                <div class="nav-label">Hospital Network</div>
+        <nav class="adm-nav">
+            <a href="dashboard.html">
+                <span class="nav-icon">⊞</span>
+                <span>Overview</span>
+            </a>
+            <a href="hospitals.html">
+                <span class="nav-icon">🏥</span>
+                <span>Manage Hospitals</span>
+            </a>
+            <a class="active" href="verify_doctor.html">
+                <span class="nav-icon">🩺</span>
+                <span>Verify &amp; Affiliations</span>
+                <span class="adm-badge">3</span>
+            </a>
+            <a href="schedule_approvals.html">
+                <span class="nav-icon">📅</span>
+                <span>Schedule Approvals</span>
+                <span class="adm-badge">2</span>
+            </a>
+            <a href="appointments.html">
+                <span class="nav-icon">📋</span>
+                <span>Appointments</span>
+                <span class="adm-badge appointment-badge">5</span>
+            </a>
+        </nav>
 
-                <a href="#">
-                    <span class="nav-icon">⊞</span>
-                    Overview
-                </a>
-                <a href="#">
-                    <span class="nav-icon">🏥</span>
-                    Manage Hospitals
-                </a>
-                <a href="#" class="active">
-                    <span class="nav-icon">🩺</span>
-                    Verify Doctors
-                    <span class="nav-badge">3</span>
-                </a>
-                <a href="#">
-                    <span class="nav-icon">📅</span>
-                    Schedule Approvals
-                    <span class="nav-badge">4</span>
-                </a>
-                <a href="#">
-                    <span class="nav-icon">📋</span>
-                    Appointments
-                </a>
-            </nav>
-
-            <!-- Bottom Account Area -->
-            <div class="sidebar-bottom">
-
-                <div class="nav-label">Account</div>
-
-                <a href="#" class="logout-link">
-                    <span class="nav-icon">↩</span>
-                    Sign Out
-                </a>
-            </div>
-        </aside>
-
-
-        <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-        <main class="main">
-            <header class="topbar">
+        <div class="sidebar-bottom">
+            <div class="network-status">
+                <span class="status-pulse"></span>
                 <div>
-                    <div class="breadcrumb">
-                        Hospital Network / Doctors
-                    </div>
-                    <h1>Doctor Management</h1>
+                    <strong>Network Online</strong>
+                    <small>All systems operational</small>
+                </div>
+            </div>
+            <a class="signout-link" href="../login.html">
+                <span class="nav-icon">↩</span>
+                Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <main class="adm-content">
+        <header class="adm-topbar">
+            <button class="adm-mob-toggle" id="sidebarToggle" onclick="openSidebar()" aria-label="Open navigation">☰</button>
+
+            <div class="breadcrumb">
+                <span>HAMS</span>
+                <b>/</b>
+                <strong>Verify &amp; Affiliations</strong>
+            </div>
+
+            <div class="topbar-right">
+                <div class="topbar-search">
+                    <span class="search-icon">⌕</span>
+                    <input type="text" placeholder="Search records..." aria-label="Search">
                 </div>
 
-                <div class="admin-profile">
-                    <div class="admin-avatar">
-                        AD
+                <button class="topbar-icon-btn" aria-label="Notifications">
+                    ♧
+                    <span class="notif-dot"></span>
+                </button>
+
+                <div class="admin-profile-pill">
+                    <div class="avatar-circle">SA</div>
+                    <div class="profile-copy">
+                        <strong>Super Admin</strong>
+                        <small>Administrator</small>
                     </div>
-                    <div>
-                        <strong>Administrator</strong>
-                        <small>Hospital Network Admin</small>
-                    </div>
+                    <span class="profile-chevron">⌄</span>
                 </div>
-            </header>
+            </div>
+        </header>
 
             <div class="content">
 
@@ -966,10 +971,20 @@
 
             </div>
 
-        </main>
+    </main>
+</div>
 
-    </div>
+<script>
+function openSidebar() {
+    document.getElementById('adminSidebar').classList.add('open');
+    document.getElementById('sidebarOverlay').classList.add('show');
+}
+
+function closeSidebar() {
+    document.getElementById('adminSidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('show');
+}
+</script>
 
 </body>
-
 </html>
